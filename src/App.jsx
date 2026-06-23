@@ -2,27 +2,44 @@ import React, { useState } from "react";
 import Navbar from "./componenets/navbar";
 import Hero from "./componenets/hero";
 import Addstudentspopup from "./componenets/addstudentspopup";
-
+import Studentcard from "./componenets/studentcard";
 
 const App = () => {
+  const [showpopup, setshowpopup] = useState(false);
+  const [studentformdata, setstudentformdata] = useState({
+    name: "",
+    father: "",
+    image: null,
+    address: "",
+    class: "",
+    gender: "",
+    phone: "",
+    course: "",
+  });
+  const [storedata, setstoredata] = useState([]);
 
-const [showpopup, setshowpopup] = useState(false)
-const [data, setdata] = useState({
-  name:'',
-  father:'',
-  image: null,
-  
-})
- return (
-    <div >
-      <Navbar setshowpopup={setshowpopup}/>
+  return (
+    <div>
+      <Navbar setshowpopup={setshowpopup} />
 
       <Hero />
 
-       {showpopup && 
-        <Addstudentspopup setshowpopup={setshowpopup} />
-      }
-      
+      {showpopup && (
+        <Addstudentspopup
+          setshowpopup={setshowpopup}
+          studentformdata={studentformdata}
+          setstudentformdata={setstudentformdata}
+          setstoredata={setstoredata}
+        />
+      )}
+      <div className="[container-type:inline-size] flex flex-wrap gap-[3cqw] p-[5cqw] ">
+  {storedata.map((student, index) => (
+    <Studentcard 
+      key={index}
+      storedata={student}
+    />
+  ))}
+</div>
     </div>
   );
 };

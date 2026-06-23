@@ -1,11 +1,24 @@
 import React from "react";
 import {X,Image} from 'lucide-react'
 
-const Addstudentspopup = ({setshowpopup}) => {
+const Addstudentspopup = ({
+  setshowpopup,
+  studentformdata,
+  setstudentformdata,
+  setstoredata
+}) => {
+
+  const formhendel = (e) => {
+  e.preventDefault();
+
+  setstoredata((prev) => [...prev, studentformdata]);
+
+  setshowpopup(null);
+};
 
   return (
     <div className="text-black fixed top-0 left-0 items-center flex justify-center  w-screen h-screen z-[999] bg-blue-500/50 backdrop-blur-sm ">
-      <form
+      <form onSubmit={formhendel}
        
         className="[container-type:inline-size]   w-[70cqw] h-[45cqw] bg-white flex flex-col items-center p-[2cqw] rounded-[2cqw]"
       >
@@ -25,19 +38,19 @@ const Addstudentspopup = ({setshowpopup}) => {
               <label className="font-medium text-[4cqw]" htmlFor="fullname">
                 Full Name:
               </label>
-              <input
+              <input required
                 className="border-[0.5cqw] rounded-[1cqw] h-[8cqw] p-[1cqw] text-[3.5cqw]"
                 type="text"
                 id="fullname"
                 name="fullname"
                 placeholder="Enter full name"
-                // value={studentformdata.name}
-                // onChange={(e) => {
-                //   setstudentformdata({
-                //     ...studentformdata,
-                //     name: e.target.value,
-                //   });
-                // }}
+                value={studentformdata.name}
+                onChange={(e) => {
+                  setstudentformdata({
+                    ...studentformdata,
+                    name: e.target.value,
+                  });
+                }}
               />
             </div>
 
@@ -45,36 +58,36 @@ const Addstudentspopup = ({setshowpopup}) => {
               <label className="font-medium text-[4cqw]" htmlFor="fathername">
                 Father Name:
               </label>
-              <input
+              <input required
                 className="border-[0.5cqw] rounded-[1cqw] h-[8cqw] p-[1cqw] text-[3.5cqw]"
                 type="text"
                 id="fathername"
                 name="fathername"
                 placeholder="Enter father name"
-                // value={studentformdata.father}
-                // onChange={(e) => {
-                //   setstudentformdata({
-                //     ...studentformdata,
-                //     father: e.target.value,
-                //   });
-                // }}
+                value={studentformdata.father}
+                onChange={(e) => {
+                  setstudentformdata({
+                    ...studentformdata,
+                    father: e.target.value,
+                  });
+                }}
               />
             </div>
           </div>
           <div className="[container-type:inline-size] flex flex-col items-center  w-[40cqw] ">
             <div className=" w-[50cqw] h-[45cqw]  ">
-              <input
+              <input required
                 type="file"
                 id="picture"
                 name="picture"
                 accept="image/*"
                 className="hidden"
-                // onChange={(e) => {
-                //   setstudentformdata({
-                //     ...studentformdata,
-                //     image: e.target.files[0],
-                //   });
-                // }}
+                onChange={(e) => {
+                  setstudentformdata({
+                    ...studentformdata,
+                    image: e.target.files[0],
+                  });
+                }}
               />
               <label htmlFor="picture">
                 <Image className="w-full h-full text-blue-400" />
@@ -89,18 +102,18 @@ const Addstudentspopup = ({setshowpopup}) => {
           <label className="font-medium text-[2.4cqw]" htmlFor="address">
             Address:
           </label>
-          <textarea
+          <textarea required
             className="border-[0.3cqw] scrollbar-none rounded-[1cqw] h-[5cqw] p-[1cqw] text-[2.15cqw]"
             id="address"
             name="address"
             placeholder="Enter address"
-            // value={studentformdata.address}
-            // onChange={(e) => {
-            //   setstudentformdata({
-            //     ...studentformdata,
-            //     address: e.target.value,
-            //   });
-            // }}
+            value={studentformdata.address}
+            onChange={(e) => {
+              setstudentformdata({
+                ...studentformdata,
+                address: e.target.value,
+              });
+            }}
           />
         </div>
         <div className="[container-type:inline-size] pt-[1.8cqw]  w-[90cqw] flex gap-[5cqw]  ">
@@ -109,17 +122,17 @@ const Addstudentspopup = ({setshowpopup}) => {
               Class:
             </label>
 
-            <select
+            <select required
               className="font-medium text-[2.2cqw]   border-[0.3cqw] rounded-[1cqw] h-[5cqw] p-[1cqw] "
               id="class"
               name="class"
-              // value={studentformdata.class}
-              // onChange={(e) => {
-              //   setstudentformdata({
-              //     ...studentformdata,
-              //     class: e.target.value,
-              //   });
-              // }}
+              value={studentformdata.class}
+              onChange={(e) => {
+                setstudentformdata({
+                  ...studentformdata,
+                  class: e.target.value,
+                });
+              }}
             >
               <option value="">Select Class</option>
               <option value="9th">9th</option>
@@ -139,14 +152,14 @@ const Addstudentspopup = ({setshowpopup}) => {
                   type="radio"
                   id="male"
                   name="gender"
-                  // value="male"
-                  // checked={studentformdata.gender === "male"}
-                  // onChange={(e) => {
-                  //   setstudentformdata({
-                  //     ...studentformdata,
-                  //     gender: e.target.value,
-                  //   });
-                  // }}
+                  value="male"
+                  checked={studentformdata.gender === "male"}
+                  onChange={(e) => {
+                    setstudentformdata({
+                      ...studentformdata,
+                      gender: e.target.value,
+                    });
+                  }}
                 />
                 <label className="font-medium text-[2.4cqw]" htmlFor="male">
                   Male
@@ -159,14 +172,14 @@ const Addstudentspopup = ({setshowpopup}) => {
                   type="radio"
                   id="female"
                   name="gender"
-                  // value="female"
-                  // checked={studentformdata.gender === "female"}
-                  // onChange={(e) => {
-                  //   setstudentformdata({
-                  //     ...studentformdata,
-                  //     gender: e.target.value,
-                  //   });
-                  // }}
+                  value="female"
+                  checked={studentformdata.gender === "female"}
+                  onChange={(e) => {
+                    setstudentformdata({
+                      ...studentformdata,
+                      gender: e.target.value,
+                    });
+                  }}
                 />
                 <label className="font-medium text-[2.4cqw]" htmlFor="female">
                   Female
@@ -182,19 +195,19 @@ const Addstudentspopup = ({setshowpopup}) => {
             <label className="font-medium text-[2.3cqw]" htmlFor="phone">
               Phone Number:
             </label>
-            <input
+            <input required
               className="border-[0.3cqw] rounded-[1cqw] h-[5cqw] p-[1cqw] text-[2.15cqw]"
               type="tel"
               id="phone"
               name="phone"
               placeholder="03XX-XXXXXXX"
-              // value={studentformdata.phone}
-              // onChange={(e) => {
-              //   setstudentformdata({
-              //     ...studentformdata,
-              //     phone: e.target.value,
-              //   });
-              // }}
+              value={studentformdata.phone}
+              onChange={(e) => {
+                setstudentformdata({
+                  ...studentformdata,
+                  phone: e.target.value,
+                });
+              }}
             />
           </div>
           <div className="flex flex-col w-[50cqw]">
@@ -202,17 +215,17 @@ const Addstudentspopup = ({setshowpopup}) => {
               course:
             </label>
 
-            <select
+            <select required
               className="capitalize font-medium text-[2.2cqw] border-[0.3cqw] rounded-[1cqw] h-[5cqw] p-[1cqw] "
               id="class"
               name="class"
-              // value={studentformdata.course}
-              // onChange={(e) => {
-              //   setstudentformdata({
-              //     ...studentformdata,
-              //     course: e.target.value,
-              //   });
-              // }}
+              value={studentformdata.course}
+              onChange={(e) => {
+                setstudentformdata({
+                  ...studentformdata,
+                  course: e.target.value,
+                });
+              }}
             >
               <option value="">Select course</option>
               <option value="general science">general science</option>
@@ -229,9 +242,7 @@ const Addstudentspopup = ({setshowpopup}) => {
           add student
         </button>
       </form>
-      {/* {showstudentformdata && (
-        <Studentcard showstudentformdata={showstudentformdata} />
-      )} */}
+    
     </div>
   );
 };
