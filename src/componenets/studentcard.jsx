@@ -1,9 +1,9 @@
 import React from "react";
 
-const Studentcard = ({ storedata }) => {
+const Studentcard = ({ storedata, onClick  }) => {
   return (
 
-      <div className="[container-type:inline-size] flex flex-col bg-white rounded-[2cqw] shadow-[0_0_1cqw_rgba(37,99,235,0.3)] hover:scale-[1.06] duration-500 transition-all w-[31cqw] h-[20cqw]">
+      <div onClick={onClick } className="[container-type:inline-size] flex flex-col bg-white rounded-[2cqw] shadow-[0_0_1cqw_rgba(37,99,235,0.7)] hover:scale-[1.06] hover:shadow-blue-900 duration-500 transition-all w-[31cqw] h-[20cqw] cursor-pointer">
 
         <div className="[container-type:inline-size] rounded-tl-[3cqw] rounded-tr-[3cqw] bg-blue-800 flex items-center justify-center uppercase w-full h-[30cqw] font-black">
           <h1 className="text-[5cqw] text-white">
