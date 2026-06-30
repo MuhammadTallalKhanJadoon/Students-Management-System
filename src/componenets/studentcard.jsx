@@ -3,9 +3,9 @@ import React from "react";
 const Studentcard = ({ storedata, onClick  }) => {
   return (
 
-      <div onClick={onClick } className="[container-type:inline-size] flex flex-col bg-white rounded-[2cqw] shadow-[0_0_1cqw_rgba(37,99,235,0.7)] hover:scale-[1.06] hover:shadow-blue-900 duration-500 transition-all w-[31cqw] h-[20cqw] cursor-pointer">
+      <div onClick={onClick } className="[container-type:inline-size]  dark:bg-slate-900 border-slate-700 flex flex-col bg-white rounded-[2cqw] shadow-[0_0_1cqw_rgba(37,99,235,0.7)] hover:scale-[1.06] hover:shadow-blue-900 duration-500 transition-all w-[31cqw] h-[20cqw] cursor-pointer dark:shadow-[0_0_2cqw_rgba(0,0,0,0.9)] dark:text-slate-400 dark:hover:shadow-black">
 
-        <div className="[container-type:inline-size] rounded-tl-[3cqw] rounded-tr-[3cqw] bg-blue-800 flex items-center justify-center uppercase w-full h-[30cqw] font-black">
+        <div className="[container-type:inline-size] dark:bg-black dark:border-[0.1cqw] dark:border-white/20  rounded-tl-[6cqw] rounded-tr-[6cqw] bg-blue-800 flex items-center justify-center uppercase w-full h-[30cqw] font-black ">
           <h1 className="text-[5cqw] text-white">
             student card
           </h1>
@@ -23,7 +23,7 @@ const Studentcard = ({ storedata, onClick  }) => {
           <div className="[container-type:inline-size] py-[5cqw] gap-[3cqw] flex flex-col items-center w-[30cqw]">
             <img
               className="[container-type:inline-size] w-[70cqw] h-[70cqw] bg-blue-500 [clip-path:circle(50%)]"
-              src={storedata?.image ? URL.createObjectURL(storedata.image) : ""}
+              src={storedata?.image || ""}
               alt=""
             />
 

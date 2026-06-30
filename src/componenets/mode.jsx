@@ -1,13 +1,23 @@
-import React from 'react'
-import { SunMedium,Moon } from 'lucide-react';
+import { SunMedium, Moon } from "lucide-react";
 
-const Mode = () => {
+const Mode = ({ dark, setDark }) => {
   return (
-    <div className="flex justify-around border-[0.1cqw] rounded-[5cqw] gap-[1cqw] p-[1.5cqw] w-[25cqw]">
-      <SunMedium className="h-[6.3cqw]" />
-      <Moon className="h-[6.3cqw]" />
-    </div>
-  )
-}
+    <div className="flex justify-around border rounded-full p-2 gap-3">
+      <SunMedium
+        onClick={() => setDark(false)}
+        className={`cursor-pointer ${
+          !dark ? "text-yellow-500" : "text-gray-400"
+        }`}
+      />
 
-export default Mode
+      <Moon
+        onClick={() => setDark(true)}
+        className={`cursor-pointer ${
+          dark ? "text-blue-500" : "text-gray-400"
+        }`}
+      />
+    </div>
+  );
+};
+
+export default Mode;
